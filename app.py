@@ -9,7 +9,12 @@ def load_data():
     df = pd.read_csv("grading_data.csv")
     return df
 
-df = load_data()
+#df = load_data()
+
+if "df" not in st.session_state:
+    st.session_state.df = load_data()
+
+df = st.session_state.df
 
 # ---------------------------
 # Helpers
