@@ -50,14 +50,20 @@ if "grader1_comment" not in df.columns:
     df["grader1_comment"] = ""
 
 # ---------------------------
-# Filter rows needing grading
+# Filter rows needing grading (RUN ONCE PER SESSION)
 # ---------------------------
-rows_to_grade = df[
-    df["grader1_categories"].isna() &
-    df["grader2_categories"].isna() &
-    df["model_categories"].notna()
-]
+if "rows_to_grade" not in st.session_state:
+    rows = df[
+        df["grader1_categories"].isna() &
+        df["grader2_categories"].isna() &
+        df["model_categories"].notna()
+    ].index.tolist()
 
+    st.session_state.rows_to_grade = rows
+    st.session_state.row_index = 0
+    st.session_state.submitted = False
+
+rows_to_grade = st.session_state.rows_to_grade
 total_items = len(rows_to_grade)
 
 if total_items == 0:
@@ -68,6 +74,20 @@ if total_items == 0:
         file_name="graded_output.csv"
     )
     st.stop()
+
+# Prevent crash when finished
+if st.session_state.row_index >= total_items:
+    st.success("All items graded!")
+
+    st.download_button(
+        "Download Updated CSV",
+        df.to_csv(index=False),
+        file_name="graded_output.csv"
+    )
+    st.stop()
+
+row_id = rows_to_grade[st.session_state.row_index]
+row = df.loc[row_id]
 
 # ---------------------------
 # Session State
@@ -104,9 +124,11 @@ st.divider()
 # ---------------------------
 # Step 1 — Grader Input (Blind)
 # ---------------------------
-all_categories = sorted(set(
-    sum(df["categories"].dropna().apply(parse_cats).tolist(), [])
-))
+#all_categories = sorted(set(
+#    sum(df["categories"].dropna().apply(parse_cats).tolist(), [])
+#))
+
+all_categories = parse_cats(row["categories"])
 
 if not st.session_state.submitted:
 
