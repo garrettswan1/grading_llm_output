@@ -117,7 +117,8 @@ row = df.loc[row_id]
 # Display Text
 # ---------------------------
 st.subheader("Prompt")
-st.write(row["prompt"])
+#st.write(row["prompt"])
+st.markdown(row["prompt"])
 
 st.subheader("Question")
 st.write(row["question"])
