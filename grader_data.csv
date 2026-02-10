@@ -1,0 +1,5 @@
+﻿prompt,question,students_answer,categories,grade1_rating,grader2_rating,grader1_categories,grader2_categories,model_categories,acceptable
+"Test of the prompt. 
+
+Presumably this will be long",What do you think?,I think this may work,Aa|Bb|Cc|Dd|Ee,,,,,None of the above,
+A second long prompt,Maybe it worked?,Yes!,TRUE|FALSE,,,,,Banana,
