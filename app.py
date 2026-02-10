@@ -104,7 +104,8 @@ st.caption(f"Progress: {st.session_state.row_index} / {total_items}")
 # ---------------------------
 # Get current row
 # ---------------------------
-row_id = rows_to_grade.index[st.session_state.row_index]
+#row_id = rows_to_grade.index[st.session_state.row_index]
+row_id = rows_to_grade[st.session_state.row_index]
 row = df.loc[row_id]
 
 # ---------------------------
