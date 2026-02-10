@@ -4,6 +4,13 @@ import pandas as pd
 st.set_page_config(layout="wide")
 st.title("Human Grading + Model Review Tool")
 
+@st.cache_data
+def load_data():
+    df = pd.read_csv("grading_data.csv")
+    return df
+
+df = load_data()
+
 # ---------------------------
 # Helpers
 # ---------------------------
@@ -18,13 +25,13 @@ def cats_to_string(cat_list):
 # ---------------------------
 # Upload CSV
 # ---------------------------
-uploaded_file = st.file_uploader("Upload grading CSV", type="csv")
+#uploaded_file = st.file_uploader("Upload grading CSV", type="csv")
 
-if uploaded_file is None:
-    st.info("Upload a CSV file to begin.")
-    st.stop()
+#if uploaded_file is None:
+#    st.info("Upload a CSV file to begin.")
+#    st.stop()
 
-df = pd.read_csv(uploaded_file)
+#df = pd.read_csv(uploaded_file)
 
 # Ensure required columns exist
 required_cols = [
