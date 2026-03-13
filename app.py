@@ -206,7 +206,7 @@ else:
         df.at[row_id, "acceptable"] = acceptable
         df.at[row_id, "grader1_comment"] = comment
     
-        df.to_csv(filename="graded_output.csv",index=False)
+        df.to_csv("graded_output.csv",index=False)
 
 #st.download_button(
 #    "Download Updated CSV",
