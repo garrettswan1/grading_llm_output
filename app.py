@@ -199,8 +199,8 @@ else:
 if st.session_state.row_index >= total_items:
     st.success("All items graded!")
 
-    st.download_button(
-        "Download Updated CSV",
-        df.to_csv(index=False),
-        file_name="graded_output.csv"
-    )
+st.download_button(
+    "Download Updated CSV",
+    df.to_csv(index=False),
+    file_name="graded_output.csv"
+)
