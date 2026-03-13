@@ -43,7 +43,7 @@ required_cols = [
     "prompt", "question", "students_answer", "categories",
     "grade1_rating", "grader1_categories",
     "grader2_categories", "model_categories", "acceptable",
-    "weight_score","llm_rating"
+    "weight_score","llm_rating","number"
 ]
 
 for col in required_cols:
@@ -119,7 +119,7 @@ row = df.loc[row_id]
 # ---------------------------
 
 st.subheader("Question")
-st.write(row["question"])
+st.write("**Question "+str(row["number"])+"**: " + row["question"])
 
 st.subheader("Student Answer")
 st.info(row["students_answer"])
