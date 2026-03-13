@@ -117,15 +117,16 @@ row = df.loc[row_id]
 # ---------------------------
 # Display Text
 # ---------------------------
-st.subheader("Prompt")
-#st.write(row["prompt"])
-st.markdown(row["prompt"],unsafe_allow_html=True)
 
 st.subheader("Question")
 st.write(row["question"])
 
 st.subheader("Student Answer")
 st.info(row["students_answer"])
+
+st.subheader("Prompt")
+#st.write(row["prompt"])
+st.markdown(row["prompt"],unsafe_allow_html=True)
 
 st.divider()
 
@@ -174,15 +175,23 @@ else:
         st.write("**Score from LLM:**", str(float(row["llm_rating"])*10))
 
         accept_model = st.radio(
-            "Are the model's extra categories acceptable?",
-            ["Yes", "No"]
+            "Do you agree with the LMM?",
+            ["Disagree","Slightly Agree","Agree","Strongly Agree"]
         )
         comment = st.text_area("Optional comment")
-        acceptable = 1 if accept_model == "Yes" else 0
+        #acceptable = 1 if accept_model == "Yes" else 0
+        if accept_model == "Strongly Agree":
+            acceptable = 3
+        elif accept_model == "Strongly Agree":
+            acceptable = 2
+        elif accept_model == "Strongly Agree":
+            acceptable = 1
+        else:
+            acceptable = 0
 
     else:
         st.success("Your categories align with the model.")
-        acceptable = 1
+        acceptable = 3
         comment = ""
 
     # Save and move on
