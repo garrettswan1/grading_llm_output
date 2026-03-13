@@ -119,7 +119,7 @@ row = df.loc[row_id]
 # ---------------------------
 st.subheader("Prompt")
 #st.write(row["prompt"])
-st.markdown(row["prompt"])
+st.markdown(row["prompt"],unsafe_allow_html=True)
 
 st.subheader("Question")
 st.write(row["question"])
