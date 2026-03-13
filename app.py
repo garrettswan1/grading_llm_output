@@ -199,14 +199,18 @@ else:
     if st.session_state.row_index >= total_items:
         st.success("All items graded!")
     
-    if st.button("Finalize and Download File"):
+    if st.button("Finalize and Download File?"):
     
         df.at[row_id, "grade1_rating"] = score
         df.at[row_id, "grader1_categories"] = cats_to_string(grader_selected)
         df.at[row_id, "acceptable"] = acceptable
         df.at[row_id, "grader1_comment"] = comment
     
-        df.to_csv("graded_output.csv",index=False)
+        st.download_button(
+            "Click to Download",
+            df.to_csv(index=False),
+            file_name="graded_output.csv"
+        )
 
 #st.download_button(
 #    "Download Updated CSV",
