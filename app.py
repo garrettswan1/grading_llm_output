@@ -140,7 +140,7 @@ all_categories = parse_cats(row["categories"])
 
 if not st.session_state.submitted:
 
-    score = st.selectbox("Select Score (1–10)", list(range(1, 11)))
+    score = st.selectbox("Select Score (1–10)", ["1","2","3","4(good)","5","6","7(better)","8","9","10(best)")
     grader_selected = st.multiselect("Select Categories", all_categories)
 
     if st.button("Submit Grade"):
