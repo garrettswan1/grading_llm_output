@@ -166,7 +166,7 @@ else:
         #reveal = st.checkbox("Reveal model categories")
 
         #if reveal:
-        st.write("**Your categories:**", ".join(grader_selected))
+        st.write("**Your categories:**", ", ".join(grader_selected))
         st.write("**Your rating:**", str(score))
         st.write("-------------------")
         st.write("**Model Categories:**", ", ".join(model_selected))
