@@ -162,7 +162,7 @@ else:
 
     st.subheader("Review")
 
-    if missing_from_grader:
+    if any(missing_from_grader):
         st.warning("The model selected additional categories.")
         #reveal = st.checkbox("Reveal model categories")
 
