@@ -170,8 +170,8 @@ else:
         st.write("**Your rating:**", str(score))
         st.write("-------------------")
         st.write("**Model Categories:**", ", ".join(model_selected))
-        st.write("**Score Based on Weighting:**", str(row["weight_score"]))
-        st.write("**Score from LLM:**", str(row["llm_rating"]))
+        st.write("**Score Based on Weighting:**", str(float(row["weight_score"])*10))
+        st.write("**Score from LLM:**", str(float(row["llm_rating"])*10))
 
         accept_model = st.radio(
             "Are the model's extra categories acceptable?",
