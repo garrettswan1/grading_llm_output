@@ -42,7 +42,8 @@ def cats_to_string(cat_list):
 required_cols = [
     "prompt", "question", "students_answer", "categories",
     "grade1_rating", "grader1_categories",
-    "grader2_categories", "model_categories", "acceptable"
+    "grader2_categories", "model_categories", "acceptable",
+    "weight_score","llm_rating"
 ]
 
 for col in required_cols:
@@ -166,6 +167,8 @@ else:
 
         if reveal:
             st.write("**Model Categories:**", ", ".join(model_selected))
+            st.write("**Score Based on Weighting:**", str(row["weight_score"]))
+            st.write("**Score from LLM:**", str(row["llm_rating"]))
 
         accept_model = st.radio(
             "Are the model's extra categories acceptable?",
