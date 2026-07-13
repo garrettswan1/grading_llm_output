@@ -16,10 +16,7 @@ if "df" not in st.session_state:
 
 df = st.session_state.df
 
-if "grade1_rating" not in df.columns:
-    df["grade1_rating"] = pd.Series([None] * len(df), dtype="string")
-else:
-    df["grade1_rating"] = df["grade1_rating"].astype("string")
+df = df.astype("string")
 
 
 # ---------------------------
