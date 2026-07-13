@@ -13,11 +13,9 @@ def load_data():
 
 if "df" not in st.session_state:
     st.session_state.df = load_data()
+    st.session_state.df = st.session_state.df.astype(object)
 
 df = st.session_state.df
-
-df = df.astype(object)
-
 
 # ---------------------------
 # Helpers
