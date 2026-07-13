@@ -16,7 +16,7 @@ if "df" not in st.session_state:
 
 df = st.session_state.df
 
-df = df.astype("string")
+df = df.astype(object)
 
 
 # ---------------------------
