@@ -9,6 +9,11 @@ def load_data():
     df = pd.read_csv("grading_data.csv")
     return df
 
+if "grade1_rating" not in df.columns:
+    df["grade1_rating"] = pd.Series([None] * len(df), dtype="string")
+else:
+    df["grade1_rating"] = df["grade1_rating"].astype("string")
+
 #df = load_data()
 
 if "df" not in st.session_state:
