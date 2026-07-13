@@ -185,9 +185,9 @@ else:
         #acceptable = 1 if accept_model == "Yes" else 0
         if accept_model == "Strongly Agree":
             acceptable = 3
-        elif accept_model == "Strongly Agree":
+        elif accept_model == "Agree":
             acceptable = 2
-        elif accept_model == "Strongly Agree":
+        elif accept_model == "Slightly Agree":
             acceptable = 1
         else:
             acceptable = 0
